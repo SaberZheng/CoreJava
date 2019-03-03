@@ -1,0 +1,55 @@
+
+HashMap 和 Hashtable 的相同点:
+
+1、内部都是基于 哈希表 存储数据
+
+2、HashMap 和 Hashtable 的迭代器 都是 快速失败 ( fail-fast ) 的
+
+HashMap 和 Hashtable 的区别:
+
+1、用来确定元素在哈希表中的位置的方式不同:
+
+     HashMap 根据 key.hashCode() 重新计算一个值:
+     
+     		static final int hash( Object key ) {
+		        int h;
+		        return (key == null) ? 0 : ( h = key.hashCode() ) ^ ( h >>> 16 );//向右移16位
+		    }
+     
+     然后再根据这个值来确定元素在哈希表中的位置:
+         int n = table.length ;
+         int hash = hash( key ) ;
+         table[ ( n - 1) & hash ] = newNode( hash, key, value, null ) ; // 不是源码
+         
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     
+     Hashtable 中的实现:
+     	int hash = key.hashCode(); // key 必须不能为 null
+        int index = (hash & 0x7FFFFFFF) % tab.length;
+
+
+2、HashMap 不支持线程安全的 ( 所有的方法都没有 synchronized 修饰 )
+     Hashtable 支持线程安全的 ( 几乎所有的方法都被 synchronized 修饰 )
+
+
+3、HashMap 的迭代器是 快速失败 ( fail-fast ) 的 , Hashtable 的迭代器是 也是 快速失败 ( fail-fast ) 的
+      但是 由 Hashtable 的 键 ( keys() ) 和 元素 ( elements() ) 方法返回的 Enumeration 不 是快速失败的
+
+次要的区别:
+
+4、父类不同: Hashtable 的 父类 Dictionary ，而 HashMap 的父类是 AbstractMap
+
+5、对 键集、值集、键值对集 的处理方式不同:
+
+     HashMap 和 Hashtable 都具有:
+     	   Set<K>	keySet()  返回所有的 key 组成的 Set 集合
+		   Collection<V>	values() 返回所有的 value 组成的 Collection 集合
+		   Set<Map.Entry<K,V>>	entrySet() 返回所有的 entry 对应的 Set 集合
+
+	Hashtable 还具有:
+			Enumeration<K>	keys()  返回此哈希表中的键的枚举
+			Enumeration<V>	elements()   返回此哈希表中的值的枚举
+
+6、因为 Hashtable 是线程全的，因此 在 单线程环 境下比 HashMap 要慢
+
+

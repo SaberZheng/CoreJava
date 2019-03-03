@@ -1,0 +1,139 @@
+﻿
+
+      从哪里开始呢?
+
+      DataType
+      Operators
+
+      Array ( 数组 )
+
+      继承:
+       public  、 protected
+       构造 ===> super()
+
+      多态: 编译时多态 、 运行时多态
+
+       重载:
+        public  int  add( int a , int b ) { }
+        public  double add( double a , double b )
+
+       父类类型引用引用子类对象
+
+       // 编译时类型 、 运行时类型(p.getClass())
+       Person p = new Sinaean();
+       p.eat();
+
+       p = new Thai();
+       p.eat();
+
+       p = new Englishman();
+       p.eat();
+
+       java.lang.Class & java.lang.Object
+   
+          java.lang.Object : 
+
+                 toString() : 类名@hashCode
+                 equals( Object another )
+                 hashCode() : 提升哈希表的性能 / 常规协定
+                 getClass() : 获取运行时类型( Class 类型的对象 )
+
+                 任何类型都可以通过 .class 属性获得其类型:
+
+                  int.class /  int[].class / Object.class / Integer.class
+
+       包装类 ( Integer )
+
+                  Integer  a = 100 ;
+                  Integer  b = 100 ;
+                  a == b ;
+
+                  System.identityHashCode( 引用变量 );
+
+       String 栈 、 堆 、池 *************************
+
+               "" 、"冻梨" 、new String( "abc" )
+
+       Date & Time:
+
+               java.util.Date
+                       java.sql.Date
+                       java.sql.Time
+                       java.sql.Timestamp
+
+              java.util.Calendar
+                       set( int field , int value )  比如 set( Calendar.YEAR , 2017 )
+                       set( year , month , date , hour , minute )
+                       set( year , month , date , hour , minute , second )
+                       get( int field )  比如 get( Calendar.MONTH )
+
+
+              java.util.TimeZone 
+
+              java.util.Locale ( 国家或地区 )
+
+              java.text.Format --> java.text.DateFormat --> java.text.SimpleDateFormat
+
+              java.time.Duration
+
+              Decimal :  
+                      Math
+                      Random
+                      BigDecimal / BigInteger / MathContext / RoundingMode
+          
+              System / Runtime:
+
+                      System.arraycopy(Object src, int srcPos, Object dest, int destPos, int length) 
+
+                      System.currentTimeMillis()
+
+                      System.gc()
+
+                      System.nanoTime() 
+
+                      System.exit( int status ) 
+
+                抽象类 & 接口
+
+                       抽象类有构造
+
+                       接口没有构造
+
+               内部类 ( 累不累 )
+
+
+                       静态内部类 *
+                       实例内部类
+                       局部内部类 ---->  匿名内部类 *
+
+                       匿名内部类: 连名字都不要的类
+                              借 "尸" 还 "魂" 
+   
+       
+
+                       类属性(静态属性)
+                       实例属性(对象级别)
+                       局部变量 ---->  参数
+
+               enum *****
+
+               Collection :  Set / List / Map   ********
+
+                HashSet / TreeSet
+
+                ArrayList / LinkedList 
+
+                HashMap / Hashtable / TreeMap
+
+                GC
+
+
+
+
+
+
+
+
+
+
+
